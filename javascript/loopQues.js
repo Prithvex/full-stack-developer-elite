@@ -30,7 +30,7 @@ for (let i = 1; i <= 20; i++) {
 let i=1;
 let n=5;
 while(i!=11){
-    console.log(n*i);
+    console.log('5 * ${i}= ${5*i}');
     i++
 }
 console.log("Exit");
