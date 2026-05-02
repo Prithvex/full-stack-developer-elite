@@ -53,3 +53,26 @@ for (let i=0; i<=50; i++ ){
     }
 }
 console.log("loop terminated ");
+
+//take the input from user and print whenever the user say is even or odd
+let number = prompt("Enter your name:");
+console.log(number);
+
+if (number%2==0){
+    console.log("This is even number");
+}
+else if (number%2==1){
+    console.log("This is odd number");
+}
+else{
+    console.log("Number is zero");
+}
+
+//count how many numbers from 1 to 100 are divisible by 3 and 5;
+
+for (let i=0; i<=100; i++ ){
+    if (i%3==0 && i%5==0){
+        console.log(i);
+    }
+}
+console.log("loop terminated ");
