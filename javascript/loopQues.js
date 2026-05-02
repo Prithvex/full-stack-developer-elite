@@ -30,7 +30,7 @@ for (let i = 1; i <= 20; i++) {
 let i=1;
 let n=5;
 while(i!=11){
-    console.log('5 * ${i}= ${5*i}');
+    console.log(`5 * ${i}= ${5*i}`);
     i++
 }
 console.log("Exit");
@@ -76,3 +76,12 @@ for (let i=0; i<=100; i++ ){
     }
 }
 console.log("loop terminated ");
+
+// count digits from 1 to n ;
+let n= 268656556;
+let count =0;
+while(n>0){
+    count++;
+    n=Math.floor(n/10);
+}
+console.log(count);
