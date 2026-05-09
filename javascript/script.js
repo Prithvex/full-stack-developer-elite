@@ -206,3 +206,13 @@ while(i<2);
 
 //BREAK AND CONTINUE
 // break --> stop the current loop iteration 
+
+//FUNCTIONS
+// -- function is piece of small executable codes having specific functionality 
+
+function function_name(){
+    //code of function 
+}
+function_name(); // call the function 
+// name not start with number , special characters and keywords 
+
