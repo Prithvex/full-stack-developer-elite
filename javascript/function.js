@@ -81,3 +81,50 @@ function fun(){
         console.log(f);
     }
 }
+
+//using the foreach loop   
+function getscore(...scores){
+    let total=0;
+    scores.forEach(function(val){
+        total+=val;
+
+    })
+        return total;
+    }
+console.log(getscore(10, 12, 14, 18));
+
+//Assign a function to a varible 
+let a =function(){
+
+}
+a();
+
+//pass the function into another function 
+
+function abcd(val){
+    val();
+}
+abcd(function(){
+    console.log("hey");
+})
+
+// Hoisting ifferentiation --> variable ko likhne se pehle chala pa rahe ho
+// pehle fuction call karo baad me banao 
+
+//but agar variable leke kiya to nahi chalega 
+abc();
+
+function abc(){
+    console.log("this print abc");
+}
+
+//connvert the normal function into IIFE
+  //--> wrap the function with bracket and call it 
+
+(function init(){
+     console.log("Initialisation");
+
+}) ();
+
+
+   

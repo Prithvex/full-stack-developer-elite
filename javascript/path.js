@@ -216,3 +216,8 @@ function function_name(){
 function_name(); // call the function 
 // name not start with number , special characters and keywords 
 
+//ARRAYS 
+//Lets start arrays 
+
+//OBJECTS
+//Lets start objects 
