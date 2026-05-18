@@ -74,3 +74,14 @@ let [a, b]= arr;
 
 //copy the one array to anothe 
 let arrcopy=[...arr];
+
+//sort the array and then reverse the array 
+arr.sort().reverse();
+
+//use .every() to check if all numbers are even
+let arr=[2, 3, 5, 7, 8, 9];
+
+let ans= arr.every(function(val){
+    return val%2==0;
+})
+
