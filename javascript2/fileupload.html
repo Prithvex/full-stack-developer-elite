@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customized Upload</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f4f8f9;
+      font-family: Arial, sans-serif;
+    }
+
+    input{
+        display: none;
+    }
+
+    #inpuBox{
+        padding: 12px 22px;
+        background-color: rgb(120, 32, 5);
+        color: rgb(221, 255, 0);
+        border-radius: 30px;
+    }
+    
+    #main #inputBox:hover{
+        background-color: rgb(236, 10, 6);
+    }
+
+  </style>
+</head>
+<body>
+
+    <input id = "fileinp", type="file">
+    <div id = "inpuBox"> Upload File </div>
+
+    <script src="fileupload.js"></script>
+    
+</body>
+</html>

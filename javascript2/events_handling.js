@@ -42,8 +42,11 @@ sel.addEventListener("change", function(val){
 });
 
 //change the device selected 
-let sel= document.querySelector("select");
-let device= document.querySelector("#device");
-sel.addEventListener("change", function(val){
-    device.textContent= ` ${val.target.value} Device selected`;
+let sel = document.querySelector("select");
+let device = document.querySelector("#device");
+
+sel.addEventListener("change", function (event) {
+    device.textContent = `${event.target.value} Device selected`;
 });
+
+//Windowkey Project --> check kr lena 
