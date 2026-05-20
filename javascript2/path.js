@@ -35,3 +35,10 @@ eve.addEventListener("submit ", function(dets){
 //email/password vallidator
 //Interactive feedback with error hightlight 
 
+//Timers and Intervals 
+//time interval 
+//prgBar --> progress bar project 
+//Auto hide alert banner after 3 sec
+
+///Local Storage, Session Storage and Cookies 
+//Theme Project

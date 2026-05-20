@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto Hide Alert</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f3f4f6;
+}
+
+/* Alert Banner */
+.alert{
+    width:90%;
+    max-width:500px;
+    margin:20px auto;
+    padding:15px 20px;
+    border-radius:10px;
+    background:#22c55e;
+    color:white;
+    font-size:18px;
+    text-align:center;
+    transition:0.5s;
+}
+
+/* Hide animation */
+.hide{
+    opacity:0;
+    transform:translateY(-20px);
+}
+</style>
+</head>
+
+<body>
+
+<div class="alert" id="alertBox">
+    ✔ File Downloaded Successfully!
+</div>
+
+<script>
+
+const alertBox = document.getElementById("alertBox");
+
+/* Auto hide after 3 seconds */
+setTimeout(() => {
+    alertBox.classList.add("hide");
+
+    /* Optional: remove completely */
+    setTimeout(() => {
+        alertBox.style.display = "none";
+    }, 500);
+
+}, 3000);
+
+</script>
+
+</body>
+</html>

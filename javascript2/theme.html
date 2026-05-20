@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Theme Toggle</title>
+
+  <style>
+    /* Default Theme Variables */
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --card: #f4f4f4;
+      --button-bg: #111111;
+      --button-text: #ffffff;
+    }
+
+    /* Dark Theme */
+    body.dark {
+      --bg: #121212;
+      --text: #f5f5f5;
+      --card: #1e1e1e;
+      --button-bg: #f5f5f5;
+      --button-text: #111111;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: 0.3s ease;
+    }
+
+    .container {
+      height: 100vh;
+      display: grid;
+      place-items: center;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 30px;
+      border-radius: 14px;
+      text-align: center;
+      transition: 0.3s ease;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      background: var(--button-bg);
+      color: var(--button-text);
+      transition: 0.3s ease;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="card">
+      <h1>Theme Toggle</h1>
+      <p>Click the button to switch theme.</p>
+
+      <button id="themeBtn">🌙 Dark Mode</button>
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById("themeBtn");
+
+    btn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+
+      if (document.body.classList.contains("dark")) {
+        btn.textContent = "☀️ Light Mode";
+        //save to local storage --- means the changes as it is after end
+        localStorage.setItem("theme", "light");
+
+      } else {
+        btn.textContent = "🌙 Dark Mode";
+        localStorage.setItem("theme", "light");
+
+      }
+    });
+  </script>
+
+</body>
+</html>
