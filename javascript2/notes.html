@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Modern Notes App</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial,sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      background:#0f0f0f;
+      color:white;
+      overflow-x:hidden;
+      padding:40px 20px;
+    }
+
+    .app{
+      width:100%;
+      max-width:1400px;
+      margin:auto;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:30px;
+    }
+
+    .top{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+      justify-content:center;
+      align-items:center;
+    }
+
+    input,
+    textarea,
+    select{
+      border:none;
+      outline:none;
+      background:#1b1b1b;
+      color:white;
+      border-radius:14px;
+      padding:15px;
+      font-size:15px;
+    }
+
+    input{
+      width:280px;
+    }
+
+    textarea{
+      resize:none;
+      height:120px;
+    }
+
+    button{
+      border:none;
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    #add-note{
+      background:#7c3aed;
+      color:white;
+      padding:15px 24px;
+      border-radius:14px;
+      font-size:15px;
+      font-weight:bold;
+    }
+
+    #add-note:hover{
+      transform:scale(1.05);
+    }
+
+    .notes-container{
+      width:100%;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:30px;
+      perspective:1000px;
+    }
+
+    .note{
+      position:relative;
+      width:320px;
+      min-height:420px;
+      border-radius:25px;
+      overflow:hidden;
+      transition:.5s;
+      transform-style:preserve-3d;
+      animation:float 4s ease-in-out infinite;
+    }
+
+    .note:hover{
+      transform:rotateY(8deg) rotateX(6deg) scale(1.03);
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-10px);
+      }
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    .note img{
+      position:absolute;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        to top,
+        rgba(0,0,0,.95),
+        rgba(0,0,0,.25)
+      );
+    }
+
+    .content{
+      position:relative;
+      z-index:2;
+      height:100%;
+      padding:24px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+    }
+
+    .priority{
+      width:max-content;
+      padding:7px 14px;
+      border-radius:30px;
+      font-size:12px;
+      margin-bottom:14px;
+      font-weight:bold;
+    }
+
+    .high{
+      background:#dc2626;
+      color:white;
+    }
+
+    .mid{
+      background:#eab308;
+      color:black;
+    }
+
+    .low{
+      background:#22c55e;
+      color:white;
+    }
+
+    .content h2{
+      font-size:28px;
+      margin-bottom:12px;
+    }
+
+    .content p{
+      color:#ddd;
+      line-height:1.6;
+      margin-bottom:24px;
+    }
+
+    .actions{
+      display:flex;
+      gap:12px;
+    }
+
+    .edit-btn,
+    .delete-btn{
+      flex:1;
+      padding:13px;
+      border-radius:12px;
+      color:white;
+      font-weight:bold;
+    }
+
+    .edit-btn{
+      background:#2563eb;
+    }
+
+    .delete-btn{
+      background:#dc2626;
+    }
+
+    .edit-btn:hover,
+    .delete-btn:hover{
+      transform:translateY(-3px);
+    }
+
+    .form-container{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.75);
+      display:none;
+      justify-content:center;
+      align-items:center;
+      z-index:999;
+      backdrop-filter:blur(10px);
+    }
+
+    .form{
+      width:100%;
+      max-width:500px;
+      background:#111;
+      padding:30px;
+      border-radius:24px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .form-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .closeForm{
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      background:#dc2626;
+      color:white;
+      font-size:20px;
+    }
+
+    .save-btn{
+      background:#22c55e;
+      color:white;
+      padding:15px;
+      border-radius:14px;
+      font-size:16px;
+      font-weight:bold;
+    }
+
+    .save-btn:hover{
+      transform:scale(1.02);
+    }
+
+    .empty{
+      color:#777;
+      font-size:24px;
+      margin-top:50px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <div class="top">
+
+      <button id="add-note">+ Add Note</button>
+
+      <input
+        type="text"
+        id="search"
+        placeholder="Search notes..."
+      >
+
+    </div>
+
+    <div class="notes-container"></div>
+
+  </div>
+
+  <!-- FORM -->
+
+  <div class="form-container">
+
+    <div class="form">
+
+      <div class="form-top">
+        <h2>Add New Note</h2>
+        <button class="closeForm">×</button>
+      </div>
+
+      <input
+        type="text"
+        id="title"
+        placeholder="Note title"
+      >
+
+      <textarea
+        id="description"
+        placeholder="Write your note..."
+      ></textarea>
+
+      <select id="priority">
+
+        <option value="high">High Priority</option>
+
+        <option value="mid">Mid Priority</option>
+
+        <option value="low">Low Priority</option>
+
+      </select>
+
+      <button class="save-btn">Save Note</button>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    const bgImages = [
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop"
+    ];
+
+    const addNote = document.querySelector("#add-note");
+    const formContainer = document.querySelector(".form-container");
+    const closeForm = document.querySelector(".closeForm");
+    const saveBtn = document.querySelector(".save-btn");
+
+    const titleInput = document.querySelector("#title");
+    const descriptionInput = document.querySelector("#description");
+    const priorityInput = document.querySelector("#priority");
+
+    const notesContainer = document.querySelector(".notes-container");
+
+    const searchInput = document.querySelector("#search");
+
+    let editIndex = null;
+
+    // OPEN FORM
+    addNote.addEventListener("click", () => {
+      formContainer.style.display = "flex";
+    });
+
+    // CLOSE FORM
+    closeForm.addEventListener("click", () => {
+      formContainer.style.display = "none";
+      clearForm();
+    });
+
+    // GET NOTES
+    function getNotes(){
+      return JSON.parse(localStorage.getItem("notes")) || [];
+    }
+
+    // SAVE NOTES
+    function saveNotes(notes){
+      localStorage.setItem("notes", JSON.stringify(notes));
+    }
+
+    // CLEAR FORM
+    function clearForm(){
+      titleInput.value = "";
+      descriptionInput.value = "";
+      priorityInput.value = "high";
+      editIndex = null;
+    }
+
+    // RENDER NOTES
+    function renderNotes(notesData = getNotes()){
+
+      notesContainer.innerHTML = "";
+
+      if(notesData.length === 0){
+        notesContainer.innerHTML =
+          `<h2 class="empty">No Notes Found</h2>`;
+        return;
+      }
+
+      notesData.forEach((note,index)=>{
+
+        const randomImage =
+          bgImages[Math.floor(Math.random()*bgImages.length)];
+
+        const noteDiv = document.createElement("div");
+
+        noteDiv.classList.add("note");
+
+        noteDiv.innerHTML = `
+
+          <img src="${randomImage}">
+
+          <div class="overlay"></div>
+
+          <div class="content">
+
+            <span class="priority ${note.priority}">
+              ${note.priority.toUpperCase()} PRIORITY
+            </span>
+
+            <h2>${note.title}</h2>
+
+            <p>${note.description}</p>
+
+            <div class="actions">
+
+              <button
+                class="edit-btn"
+                onclick="editNote(${index})"
+              >
+                Edit
+              </button>
+
+              <button
+                class="delete-btn"
+                onclick="deleteNote(${index})"
+              >
+                Delete
+              </button>
+
+            </div>
+
+          </div>
+
+        `;
+
+        notesContainer.appendChild(noteDiv);
+
+      });
+
+    }
+
+    // ADD / UPDATE NOTE
+    saveBtn.addEventListener("click",()=>{
+
+      const title = titleInput.value.trim();
+      const description = descriptionInput.value.trim();
+      const priority = priorityInput.value;
+
+      if(!title || !description){
+        alert("Please fill all fields");
+        return;
+      }
+
+      const notes = getNotes();
+
+      const noteObj = {
+        title,
+        description,
+        priority
+      };
+
+      if(editIndex === null){
+        notes.push(noteObj);
+      }else{
+        notes[editIndex] = noteObj;
+      }
+
+      saveNotes(notes);
+
+      renderNotes();
+
+      clearForm();
+
+      formContainer.style.display = "none";
+
+    });
+
+    // DELETE NOTE
+    function deleteNote(index){
+
+      const notes = getNotes();
+
+      notes.splice(index,1);
+
+      saveNotes(notes);
+
+      renderNotes();
+
+    }
+
+    // EDIT NOTE
+    function editNote(index){
+
+      const notes = getNotes();
+
+      const note = notes[index];
+
+      titleInput.value = note.title;
+      descriptionInput.value = note.description;
+      priorityInput.value = note.priority;
+
+      editIndex = index;
+
+      formContainer.style.display = "flex";
+
+    }
+
+    // SEARCH
+    searchInput.addEventListener("input",()=>{
+
+      const value =
+        searchInput.value.toLowerCase().trim();
+
+      const notes = getNotes();
+
+      const filteredNotes = notes.filter(note=>
+
+        note.title.toLowerCase().includes(value)
+
+      );
+
+      renderNotes(filteredNotes);
+
+    });
+
+    // INITIAL
+    renderNotes();
+
+  </script>
+
+</body>
+</html>

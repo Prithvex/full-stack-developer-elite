@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Realtime Search</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      background:#0f0f0f;
+      color:white;
+      padding:40px 20px;
+    }
+
+    .wrapper{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:40px;
+    }
+
+    input{
+      width:320px;
+      padding:14px 18px;
+      border:none;
+      outline:none;
+      border-radius:12px;
+      background:#1b1b1b;
+      color:white;
+      font-size:15px;
+    }
+
+    input::placeholder{
+      color:#888;
+    }
+
+    .cards{
+      width:100%;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:30px;
+    }
+
+    .card{
+      position:relative;
+      width:300px;
+      height:400px;
+      border-radius:20px;
+      overflow:hidden;
+      background:#222;
+    }
+
+    .card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:.4s;
+    }
+
+    .card:hover img{
+      transform:scale(1.05);
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        to top,
+        rgba(0,0,0,.9),
+        rgba(0,0,0,.2)
+      );
+    }
+
+    .content{
+      position:absolute;
+      bottom:0;
+      left:0;
+      padding:20px;
+      z-index:2;
+    }
+
+    .content h3{
+      font-size:24px;
+      margin-bottom:10px;
+    }
+
+    .content p{
+      font-size:14px;
+      color:#ddd;
+      line-height:1.5;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="wrapper">
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search users..."
+    >
+
+    <div class="cards" id="cardsContainer"></div>
+
+  </div>
+
+  <script>
+
+const users = [
+  {
+    name: "Emma Richardson",
+    pic: "https://i.pravatar.cc/400?img=32",
+    bio: "Coffee addict ☕ | Designing beautiful things every day."
+  },
+  {
+    name: "Liam Carter",
+    pic: "https://i.pravatar.cc/400?img=12",
+    bio: "Photographer 📸 | Chasing sunsets and stories."
+  },
+  {
+    name: "Sophia Bennett",
+    pic: "https://i.pravatar.cc/400?img=47",
+    bio: "Fashion lover ✨ | Dream big, stay humble."
+  },
+  {
+    name: "Noah Mitchell",
+    pic: "https://i.pravatar.cc/400?img=15",
+    bio: "Tech geek 💻 | Building cool stuff on the internet."
+  },
+  {
+    name: "Ava Collins",
+    pic: "https://i.pravatar.cc/400?img=5",
+    bio: "Traveling the world one city at a time 🌍"
+  },
+  {
+    name: "Ethan Brooks",
+    pic: "https://i.pravatar.cc/400?img=67",
+    bio: "Fitness + coding = my perfect lifestyle 💪"
+  },
+  {
+    name: "Mia Anderson",
+    pic: "https://i.pravatar.cc/400?img=44",
+    bio: "Creative soul 🎨 | Music keeps me alive."
+  },
+  {
+    name: "James Parker",
+    pic: "https://i.pravatar.cc/400?img=60",
+    bio: "Entrepreneur 🚀 | Hustle in silence."
+  },
+  {
+    name: "Charlotte Lewis",
+    pic: "https://i.pravatar.cc/400?img=48",
+    bio: "Actress 🎬 | Smiling through every scene."
+  },
+  {
+    name: "Benjamin Hall",
+    pic: "https://i.pravatar.cc/400?img=69",
+    bio: "Gaming enthusiast 🎮 | Pizza lover 🍕"
+  }
+];
+    const cardsContainer = document.getElementById("cardsContainer");
+    const searchInput = document.getElementById("searchInput");
+
+    // RENDER CARDS
+    function renderCards(data){
+
+      cardsContainer.innerHTML = "";
+
+      if(data.length === 0){
+        cardsContainer.innerHTML = "<h2>No Users Found</h2>";
+        return;
+      }
+
+      data.forEach(user => {
+
+        const card = document.createElement("div");
+        card.classList.add("card");
+
+        card.innerHTML = `
+          <img src="${user.pic}" alt="${user.name}">
+          
+          <div class="overlay"></div>
+
+          <div class="content">
+            <h3>${user.name}</h3>
+            <p>${user.bio}</p>
+          </div>
+        `;
+
+        cardsContainer.appendChild(card);
+
+      });
+
+    }
+
+    // INITIAL RENDER
+    renderCards(users);
+
+    // REALTIME SEARCH
+    searchInput.addEventListener("input", e => {
+
+      const value = e.target.value.toLowerCase().trim();
+
+      const filteredUsers = users.filter(user =>
+        user.name.toLowerCase().includes(value)
+      );
+
+      renderCards(filteredUsers);
+
+    });
+
+  </script>
+
+</body>
+</html>

@@ -42,3 +42,8 @@ eve.addEventListener("submit ", function(dets){
 
 ///Local Storage, Session Storage and Cookies 
 //Theme Project
+
+
+//PROJECTS  
+//1. Real time Search filter --> realSearch.html
+//2. Notes Application 
