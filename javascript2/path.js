@@ -27,3 +27,11 @@ eve.addEventListener("submit ", function(dets){
 });
 
 //event bob --> event bubbling and capturinng 
+//Practice -->
+//Live Character Count --> cc.html 
+
+//Forms and Form Validation --> formVali.html 
+//Practice
+//email/password vallidator
+//Interactive feedback with error hightlight 
+
