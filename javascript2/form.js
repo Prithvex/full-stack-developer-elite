@@ -1,5 +1,4 @@
-// Form submit hone par page reload hota hain --> hame Rokna hain Submit hone se !!
-
+// Form submit hone par page reload rokna
 let form = document.querySelector("form");
 let inputs = document.querySelectorAll("input");
 
@@ -7,21 +6,19 @@ form.addEventListener("submit", function (e) {
 
     e.preventDefault();
 
-    // Create Card
-    let card = document.createElement("div");
-    card.classList.add("card");
-
-    // Create Profile Image
-    let profile = document.createElement("img");
-
-    // Input Values
+    // Input values lena
     let firstname = inputs[0].value;
     let surname = inputs[1].value;
     let email = inputs[2].value;
     let imageurl = inputs[3].value;
 
-    // Set image
-    profile.src = imageurl;
+    // Create Card
+    let card = document.createElement("div");
+    card.classList.add("card");
+
+    // Create Profile Image
+    let img = document.createElement("img");
+    img.setAttribute("src", imageurl);
 
     // Create Name
     let h2 = document.createElement("h2");
@@ -32,14 +29,20 @@ form.addEventListener("submit", function (e) {
     p.textContent = email;
 
     // Append inside card
-    card.appendChild(profile);
+    card.appendChild(img);
     card.appendChild(h2);
     card.appendChild(p);
 
     // Add card on screen
     document.body.appendChild(card);
-    let img = document.createElement("img");
-    img.setAttribute("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrevwXGSxY_5aDm_HgEAL4AGpBoMQ11x4rxi4OifQhh-2jqlHILOwitfU&s");
 
+    // Submit hone ke baad input fields clear karo
+    let fields = document.querySelectorAll("input, textarea");
+
+    fields.forEach(function (field) {
+        if (field.type != "submit") {
+            field.value = "";
+        }
+    });
 
 });
