@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Toast Notification</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .toast{
+            position: fixed;
+            min-width: 250px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            animation: slideIn 0.4s ease;
+            z-index: 1000;
+        }
+
+        .dark{
+            background-color: #222;
+        }
+
+        .light{
+            background-color: white;
+            color: black;
+            border: 1px solid #ccc;
+        }
+
+        @keyframes slideIn{
+            from{
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to{
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        button{
+            padding: 10px 20px;
+            border: none;
+            background-color: royalblue;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="showToast">Show Notification</button>
+
+    <script>
+
+       // ===============================
+// TOASTER FUNCTION
+// ===============================
+
+// createToaster ek factory function hai
+// Ye config receive karta hai
+// Aur ek naya function return karta hai
+function createToaster(config){
+
+    // Returned function notification show karega
+    return function(notification){
+
+        // ===============================
+        // STEP 1 : DIV CREATE KARNA
+        // ===============================
+
+        // Naya div element banaya
+        let div = document.createElement("div");
+
+
+        // ===============================
+        // STEP 2 : CLASS ADD KARNA
+        // ===============================
+
+        // Base class + theme class add ki
+        // Example:
+        // toast dark
+        // toast light
+        div.className = `toast ${config.theme}`;
+
+
+        // ===============================
+        // STEP 3 : POSITION HANDLE KARNA
+        // ===============================
+
+        // Agar right position chahiye
+        // to right side me 20px denge
+        if(config.positionX === "right"){
+            div.style.right = "20px";
+        }
+
+        // warna left side me
+        else{
+            div.style.left = "20px";
+        }
+
+
+        // ===============================
+        // STEP 4 : TOP / BOTTOM HANDLE
+        // ===============================
+
+        // Agar top position hai
+        if(config.positionY === "top"){
+            div.style.top = "20px";
+        }
+
+        // warna bottom pe show karo
+        else{
+            div.style.bottom = "20px";
+        }
+
+
+        // ===============================
+        // STEP 5 : MESSAGE ADD KARNA
+        // ===============================
+
+        // Notification ka text div ke andar dala
+        div.textContent = notification;
+
+
+        // ===============================
+        // STEP 6 : BODY ME INSERT KARNA
+        // ===============================
+
+        // div ko webpage me add kiya
+        document.body.appendChild(div);
+
+
+        // ===============================
+        // STEP 7 : AUTO REMOVE
+        // ===============================
+
+        // setTimeout delay ke baad code chalata hai
+        // duration seconds ke baad div remove hoga
+        setTimeout(() => {
+
+            // toast remove
+            div.remove();
+
+        }, config.duration * 1000);
+    };
+}
+
+
+
+// ===============================
+// CONFIG OBJECT
+// ===============================
+
+// Yaha toaster ki settings di
+let toaster = createToaster({
+
+    // left ya right
+    positionX: "right",
+
+    // top ya bottom
+    positionY: "top",
+
+    // dark ya light theme
+    theme: "dark",
+
+    // kitne second show karna hai
+    duration: 3
+});
+
+
+
+// ===============================
+// BUTTON EVENT
+// ===============================
+
+// Button click hone par
+// toaster function call hoga
+document.getElementById("showToast")
+.addEventListener("click", () => {
+
+    toaster("This is dummy notification");
+
+});
+    </script>
+
+</body>
+</html>
