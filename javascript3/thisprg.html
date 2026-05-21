@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Manager</title>
+
+    <style>
+
+        /* ===============================
+           PAGE STYLING
+        =============================== */
+
+        body{
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        /* ===============================
+           MAIN CONTAINER
+        =============================== */
+
+        .container{
+            width: 500px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            text-align: center;
+        }
+
+        /* ===============================
+           INPUTS
+        =============================== */
+
+        input,
+        textarea{
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        textarea{
+            resize: none;
+            height: 80px;
+        }
+
+        /* ===============================
+           BUTTON
+        =============================== */
+
+        button{
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            border: none;
+            background: royalblue;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background: blue;
+        }
+
+        /* ===============================
+           USER CARD
+        =============================== */
+
+        .card{
+            background: #f9f9f9;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .card img{
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .info{
+            flex: 1;
+        }
+
+        .info h3{
+            margin: 0;
+        }
+
+        .info p{
+            margin: 5px 0;
+        }
+
+        .role{
+            color: royalblue;
+            font-weight: bold;
+        }
+
+        .delete-btn{
+            background: red;
+            border: none;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>User Manager</h2>
+
+        <!-- ===============================
+             FORM
+        =============================== -->
+
+        <form>
+
+            <input 
+                type="text"
+                id="name"
+                placeholder="Enter Name"
+            >
+
+            <input 
+                type="text"
+                id="role"
+                placeholder="Enter Role"
+            >
+
+            <textarea
+                id="bio"
+                placeholder="Enter Bio"
+            ></textarea>
+
+            <input 
+                type="text"
+                id="photo"
+                placeholder="Enter Photo URL"
+            >
+
+            <button type="submit">
+                Add User
+            </button>
+
+        </form>
+
+        <!-- USER LIST -->
+        <div id="userList"></div>
+
+    </div>
+
+
+
+    <script>
+
+        // ===============================
+        // FORM SELECT KARNA
+        // ===============================
+
+        let form = document.querySelector("form");
+
+
+        // ===============================
+        // USER MANAGER OBJECT
+        // ===============================
+
+        const userManager = {
+
+            // users array
+            users: [],
+
+
+            // ===============================
+            // INIT FUNCTION
+            // ===============================
+
+            init: function(){
+
+                // form submit event
+                form.addEventListener(
+                    "submit",
+                    this.submitForm.bind(this)
+                );
+            },
+
+
+            // ===============================
+            // FORM SUBMIT
+            // ===============================
+
+            submitForm: function(e){
+
+                // reload stop
+                e.preventDefault();
+
+                // values lena
+                let name = document.getElementById("name").value.trim();
+
+                let role = document.getElementById("role").value.trim();
+
+                let bio = document.getElementById("bio").value.trim();
+
+                let photo = document.getElementById("photo").value.trim();
+
+
+                // validation
+                if(
+                    name === "" ||
+                    role === "" ||
+                    bio === "" ||
+                    photo === ""
+                ){
+                    alert("Please fill all fields");
+                    return;
+                }
+
+
+                // object create
+                let user = {
+                    name,
+                    role,
+                    bio,
+                    photo
+                };
+
+
+                // add user
+                this.addUser(user);
+
+
+                // form reset
+                form.reset();
+            },
+
+
+            // ===============================
+            // ADD USER
+            // ===============================
+
+            addUser: function(user){
+
+                // array me push
+                this.users.push(user);
+
+                // console check
+                console.log(this.users);
+
+                // UI render
+                this.renderUsers();
+            },
+
+
+            // ===============================
+            // REMOVE USER
+            // ===============================
+
+            removeUser: function(index){
+
+                // remove from array
+                this.users.splice(index, 1);
+
+                // re-render
+                this.renderUsers();
+            },
+
+
+            // ===============================
+            // SHOW USERS
+            // ===============================
+
+            renderUsers: function(){
+
+                // container select
+                let userList = document.getElementById("userList");
+
+                // clear old UI
+                userList.innerHTML = "";
+
+
+                // loop users
+                this.users.forEach((user, index) => {
+
+                    // card create
+                    let card = document.createElement("div");
+
+                    card.className = "card";
+
+
+                    // HTML insert
+                    card.innerHTML = `
+
+                        <img src="${user.photo}" alt="photo">
+
+                        <div class="info">
+
+                            <h3>${user.name}</h3>
+
+                            <p class="role">
+                                ${user.role}
+                            </p>
+
+                            <p>
+                                ${user.bio}
+                            </p>
+
+                            <button class="delete-btn">
+                                Delete
+                            </button>
+
+                        </div>
+                    `;
+
+
+                    // delete button
+                    let deleteBtn =
+                        card.querySelector(".delete-btn");
+
+
+                    // delete event
+                    deleteBtn.addEventListener("click", () => {
+
+                        this.removeUser(index);
+
+                    });
+
+
+                    // add to DOM
+                    userList.appendChild(card);
+
+                });
+            }
+        };
+
+
+        // ===============================
+        // START APP
+        // ===============================
+
+        userManager.init();
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This</title>
+</head>
+<body>
+    
+    <h1>Hello</h1>
+
+
+
+
+
+
+
+    <script>
+        //this is special keyword jista nature change ho jata hain 
+//by their use case ki kaha use karte hain 
+
+//global scope this value 
+console.log(this);
+//window hain pradhan mantri --> window is the supreme 
+
+//function scope 
+function a() {
+    console.log(this);
+}
+a();//window 
+
+//method --> aisa function jo object ke andar ho use hum function kehte hain 
+
+let obj = {
+    name:"pikachu", 
+    age:22,
+    sayname:function(){
+        console.log(this); //this.age , this.name
+    },
+
+}
+obj.sayname();  // Object
+
+
+//Event handlers 
+
+document.querySelector("h1");
+addEventListener("click", function(){
+    alert("Faaaaaaaaa");
+})
+
+//Class in js 
+class abc{
+    b=2; // let var use nahi kar sakte ho 
+    constructor(){
+        console.log("hehe");
+        this.a=13;
+    }
+}
+let val = new abc(); // new creates an blank object , // this ke jagah pr blank obj aa jayega 
+//val is the instance of abc class 
+
+// method ke andar
+        let obju = {
+            
+        name: "harsh",
+        age: 26,
+        sayName: function () {
+            function defg() {
+            console.log(this);
+        }
+            defg();
+        },
+        };
+            obju.sayName();
+
+        //this ki value
+        //global -window
+        //function window -
+        //method with es5 fnc -object
+        //method with es6 arrow fnc window -
+        //es5 function inside es5 method -window
+        //-object arrow function inside es5 method
+        // --> because arowfunction hamesha parent se value leta hain
+        //event handler -element
+        //class -blank object
+
+
+//Arrow function and lexical this 
+// kaha aarow function use kiya hain usse farak padega this ki value ko 
+
+
+//Manual Binding , bind call Apply 
+// call apply bind --> function ko call karte wakt aap uske this ki value set kar sakte ho
+
+let objj={
+    name: "prithvi",
+    age:22,
+
+};
+
+function f(a, b , c, d){
+    console.log(this, a, b, c, d);
+}
+f();//this ki value --> window hain
+f.call(objj)//this ki value --> jo bhi aap call karoge vo ho jayegi 
+
+f.apply(objj, [1, 2, 3, 4]) //apply --> sirf do parameter pass kar sakte ho , 1 is object and another is array values 
+
+let bi= f.bind(objj, 1, 2, 4, 5); // ye jo bind he vo naya function me value store karta hain always 
+bi();
+
+
+//make a this project --> thisprg.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
