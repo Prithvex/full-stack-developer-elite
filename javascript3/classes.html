@@ -1,0 +1,109 @@
+<!-- //Lets START Classes -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes</title>
+</head>
+<style>
+
+</style>
+<body>
+    
+
+
+
+
+
+
+
+
+
+    <script>
+
+//Make a class 
+class MyPencil {
+    constructor(name, color, price) {
+        this.name = name;
+        this.color = color;
+        this.price = price;
+    }
+
+    write(text) {
+        let p = document.createElement("p");
+
+        p.textContent = text;
+        p.style.color = this.color;
+        document.body.append(p);
+    }
+
+    ///erase method
+    erase(){
+        document.body.querySelectorAll("p").forEach((e)=>{
+           
+            if (e.style.color===this.color){
+                e.remove();
+            }
+           
+        });
+    }
+}
+// objects
+let p1 = new MyPencil("Natraj", "red", 10);
+let p2 = new MyPencil("Apsara", "blue", 15);
+
+
+//Extends and Super --> nayi class pichle class ki kuch value use kar sakti ahinn  aur apni kuch value hold kar sakti hain 
+
+class User {
+    constructor(name, age, city, profession, color) {
+        this.name = name;
+        this.age = age;
+        this.city = city;
+        this.profession = profession;
+        this.color= color;
+    }
+
+    write(text) {
+        let h1= document.createElement("h1");
+        h1.textContent= `${this.name} :${text}`
+        h1.style.color= this.color;
+        document.body.appendChild(h1);
+    }
+
+}
+
+//MAKE CLASS ADMIN --> that extends the user 
+
+class Admin extends User{
+    constructor(name, age, city, profession, color){
+        super(name, age, city, profession, color)
+    
+    }
+
+    //Remove rights to admin 
+     remove(color){
+        document.body.querySelectorAll("h1").forEach((ele)=>{
+           
+            if (ele.style.color.toLowerCase()===color.toLowerCase()){ //to lowecase for better accuracy 
+                ele.remove();
+            }
+           
+        });
+    }
+}
+
+    // objects
+    let user1 = new User("Aman", 22, "Nashik", "Developer","Blue");
+    let user2 = new User("Rahul", 25, "Mumbai", "Designer", "Red");
+    let add = new Admin("MrAdmin", 22, "Mumbai", "Owner");
+  
+    //to remove--> add.remove("blue"); //blue wala remove ho jayega 
+
+    3220
+
+    </script>
+</body>
+</html>

@@ -5,3 +5,7 @@
 //toster
 
 //The "this" keyword
+
+// Lets start OOP's --> object oriented programmig 
+
+//Classes 

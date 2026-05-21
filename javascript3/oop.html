@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOPs</title>
+</head>
+<style>
+
+</style>
+<body>
+    
+
+    <h3></h3>
+
+
+
+
+    <script>
+    //To OOPs me aap ek factory banate ho aur sirf job specify karte ho workers dynamically  decide karte ho 
+
+    //thiss  both function is a constructor function esi liye uska pehla letter capital karo --> good practice  
+    function CreateBisuits() {
+        this.name = "ParleG";
+        this.price = 5;
+        this.qty = 8;
+        this.company = "Parle";
+        this.category = "regular";
+    }
+    let biscute1= new CreateBisuits(); //bis1 ek object ban gaya same to same 
+
+    // use the parameters
+     function CreateBisuits(name, price, qty, company, category) {
+        this.name = "ParleG";
+        this.price = 5;
+        this.qty = 8;
+        this.company = "Parle";
+        this.category = "regular";
+    }
+    let bis1 = new CreateBisuits("Jim-Jam", "20", "1", "Britania", "Cream");
+    let bis2 = new CreateBisuits("Oreo", "30", "2", "Cadbury", "Chocolate");
+    let bis3 = new CreateBisuits("Parle-G", "10", "3", "Parle", "Glucose");
+
+    //Anime things
+
+    function CreateAnime(name, episodes, rating, studio, genre, color) {
+    this.name = name;
+    this.episodes = episodes;
+    this.rating = rating;
+    this.studio = studio;
+    this.genre = genre;
+    this.color= color;
+
+    this.write= function(yourChoice){
+        let h3= document.createElement("h3");;
+        h3.textContent= name;
+        h3.textContent= yourChoice;
+        h3. style.color=color;
+        document.body.append(h3);
+    }
+    }
+
+    let anime1 = new CreateAnime("Naruto", 220, 8.4, "Studio Pierrot", "Action", "Yellow");
+    let anime2 = new CreateAnime("One Piece", 1100, 9.0, "Toei Animation", "Adventure", "red");
+    let anime3 = new CreateAnime("Attack on Titan", 89, 9.1, "MAPPA", "Dark Fantasy", "Brown");
+
+
+//Prototypes 
+
+function CreateShirt( size, price, color, type) {
+    this.size = size;
+    this.price = price;
+    this.color = color;
+    this.type = type;
+
+}
+/// so nike is same for every product --> make prototype of it 
+CreateShirt.prototype.write= function(text){
+        let h3= document.createElement("h3");;
+        h3.textContent= name;
+        h3.textContent= text;
+        h3. style.color=this.color;
+        console.log(h3);
+        document.body.append(h3);
+    };
+
+let shirt1 = new CreateShirt("M", 1200, "Black", "Casual");
+let shirt2 = new CreateShirt("L", 1500, "Blue", "Sports");
+let shirt3 = new CreateShirt("S", 1000, "White", "Formal");
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
