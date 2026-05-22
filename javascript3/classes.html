@@ -102,7 +102,36 @@ class Admin extends User{
   
     //to remove--> add.remove("blue"); //blue wala remove ho jayega 
 
-    3220
+//Prototypal inheritance vs classical inheritance
+
+//classical inheriatance --> class bana ke extend kar dena 
+
+//Prototypal Inheritance --> sirf js me hota hain 
+// object object se inherit karta hain 
+
+let a ={};
+let b = Object.create(a); //shared memory 
+let c= {...a}; //this is hard copy 
+
+
+let coffee={
+    color:"brown",
+    drink: function(){
+        console.log("Siiiiiiiippppp")
+    }
+};
+
+let latte= Object.create(coffee); //jod do ek dusre ko 
+latte.taste= "bitter";
+latte.drink();
+
+
+
+
+
+
+
+    
 
     </script>
 </body>

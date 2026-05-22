@@ -1,0 +1,52 @@
+<!-- Fetch API and HTTP Basics  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API and HTTP Basics</title>
+</head>
+<body>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+
+//Fetch API --> get, post basics
+//API --> url jaha pr jane se data milta hain 
+
+//fetch api --> api se data fetch karega 
+fetch("https://randomuser.me/api/?results=5")// requesting multiple users 
+    .then((rawdata) => {
+        //fetch jo data lata hain use vapas json banao
+        return rawdata.json();
+    })
+    //agle then me access kar sakte ho 
+    .then((data) =>{
+        console.log(data.results[0].email);
+    })
+    .catch((err) => {
+    console.log(err);
+    });
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

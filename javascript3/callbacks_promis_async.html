@@ -1,0 +1,144 @@
+<!-- Callbacks, Promises, and Async/Await-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callbacks, Promises, and Async/Await</title>
+</head>
+<body>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+
+//  Synchronous vs Asynchronous 
+    //js me koi bhi code line by  line chalta hain --> sync
+    //sometimes code wait karta hain and jab ready ho tab chale --> async
+    console.log("Hey 1");
+    console.log("Hey 2");
+    setTimeout(()=>{
+        console.log("Hey 3");
+    }, 3000);
+    console.log("Hey 4");
+
+//Callback Patterns 
+function kuchder(val){
+    setTimeout(()=>{
+        console.log(val);
+    }, Math.floor(Math.random()*10)*1000); //math.random gives floating value --> math.floor convert to integer 
+}
+
+kuchder("Am I late");
+
+///ek function ko agar aap ek aur function bhej de rahe ho parameter mein, to wo parameter waala fnc kehlaata hai callback
+function kuchder(fnc){
+    setTimeout(fnc, Math.floor(Math.random()*10)*1000);   
+}
+kuchder(function(){
+    console.log("Kuch der baad ");
+});
+
+//callback hell --> this is litrally hell 
+function profileLekarAao(username, cb) {
+    console.log("Fetching Profile Data");
+    setTimeout(() => {
+        cb({
+            _id: 12122,
+            username,
+            age: 26,
+            email: "huihui@hui.com"
+        });
+    }, 2000);
+}
+
+function saarePostLekarAao(id, cb) {
+    console.log("Fetching all posts ");
+    setTimeout(() => {
+        cb({
+            _id: id,
+            posts: ["hey", "hello", "good morning"]
+        });
+    }, 3000);
+}
+
+profileLekarAao("harsh", function (data) {
+    console.log(data);
+
+    saarePostLekarAao(data._id, function (posts) {
+        console.log(posts);
+    });
+});
+
+
+//Promisses -->
+// aap ek promise banaate ho jo ki do states mein se ek state me jaa sakta hai and wo yaa to resolve hoga ya to reject hoga ab wo kya hoga ye to waqt bataayega 
+//par humein dono ke litye code likhna padta hai
+
+let pr= new Promise(function(res, rej){
+    setTimeout(()=>{
+        let ran = Math.floor(Math.random()*10);
+        if (ran>5) res("Resolved with "+ran);
+        else rej("Rejected with "+ran);
+    }, 3000);
+}); //3 sec ke liye pending then fulfill state then rejected state
+
+//resolve hua to 
+pr.then(function(val){
+    console.log(val);
+})
+
+//reject hua to 
+.catch(function(val){
+    console.log(val);
+})
+
+
+//Async/Await 
+
+let pro= new Promise(function(res, rej){
+    setTimeout(()=>{
+        let ran = Math.floor(Math.random()*10);
+        if (ran>5) res("Resolved with "+ran);
+        else rej("Rejected with "+ran);
+    }, 3000);
+}); 
+
+//use by the help of function --> good method to handle promisses resolve, reject
+
+async function aa(){
+    try{
+        let v = await pro;  //wait karo jab tak promiss ka pura ans nahi aa jata 
+        console.log(v);
+    }
+    catch(err){
+        console.log(err);
+    }
+    }
+aa();
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

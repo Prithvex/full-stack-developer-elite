@@ -9,3 +9,9 @@
 // Lets start OOP's --> object oriented programmig 
 
 //Classes 
+
+//Callbacks, Promises, and Async/Await
+
+//Fetch Api and HTTP basics
+
+//User card 
