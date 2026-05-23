@@ -1,0 +1,39 @@
+<!-- Lets Start Performance Optimization -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Optimization</title>
+ </head>
+ <body>
+    Input: <input type="text" name="" id="">
+
+
+
+    <script>
+//Debouncing --> aap kuch kuch action kar rahe ho aur yee nahi  chahte ki action  pe kuch ho , jab bhi action
+// ke beech me koi specific gap aaye to fit action perform ho 
+//har action pe reaction na ho --> jab beech me gap aaye tab reaction ho 
+
+function debounce(fnc, delay){
+    let timer;
+    return function(...args) {
+        clearTimeout(timer);
+        timer= setTimeout(function(){
+
+            fnc(...args);
+        }, delay);
+    };
+}
+
+document.querySelector("input").addEventListener(
+    "input", 
+debounce(function(){
+    console.log("Happy!!");
+}, 1000)
+);
+
+    </script>
+ </body>
+ </html>

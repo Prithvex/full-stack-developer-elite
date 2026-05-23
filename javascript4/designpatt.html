@@ -1,0 +1,165 @@
+<!-- Design Patterns in javascript  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Patterns</title>
+</head>
+<body>
+    
+
+
+
+
+
+
+
+    <script>
+// module pattern
+// Modale Pattern ek design pattern hai jisme hum apna code ek self executing function (IIFE) ke andar likhte hain, taki variables aur functions private rahen.
+// Iske andar se hum sirf wahi cheezein return karte hain jo bahar use karni hain.
+// Is pattern ka main fayda hai data hiding (encapsulation) aur clean structure, taaki code secure, reusable aur manageable ban sake.
+
+//make the immediately invoke function 
+let bb= 4000; //can be access anywhere 
+let fnc = (function(){
+    let money = 500000000000000;
+})(); //this is private variable ---> directly access nahi hoga 
+
+
+ //Bank Balance logic
+let Bank = (function () {
+    let bankBalance = 12000;
+
+    function checkBalance() {
+        console.log(bankBalance);
+    }
+
+    function setBalance(val) {
+        bankBalance = val;
+    }
+
+    function withdraw(val) {
+        if (val <= bankBalance) {
+            bankBalance -= val;
+            console.log(bankBalance);
+        } else {
+            console.log("Insufficient balance");
+        }
+    }
+    // return public methods
+    return {
+        checkBalance,
+        setBalance,
+        withdraw
+    };
+})();
+
+// Usage
+Bank.checkBalance();   // 12000
+Bank.withdraw(2000);   // 10000
+Bank.setBalance(5000);
+Bank.checkBalance();   // 5000
+
+
+//Revealing Module Pattern
+// Just change the return name --> return public methods
+    return {
+        check: checkBalance,
+        set :setBalance,
+        draw: withdraw
+    }
+
+
+// Factory Function Pattern
+// Ek function banate ho jo objects create karta hai (factory = object banane ki machine)
+// Factory Function Pattern ek aisa design pattern hai jisme hum ek simple function likhte hain jo naye objects banakar return karta hai, bina class ya new keyword use kiye.
+// Is pattern ka main idea hai → object creation ko ek function ke through control karna.
+// Har baar jab tum factory function call karte ho, tumhe ek naya ob milta hai jisme apne methods aur (agar chaho to) private data ho sa hai.
+
+//Storage 
+function createProduct(name, price) {
+    let stock = 10;
+
+    return {
+        name,
+        price,
+
+        buy(qty) {
+            if (qty <= stock) {
+                stock -= qty;
+                console.log(`Booked! ${stock} pieces left.`);
+            } else {
+                console.log("Not enough stock available.");
+            }
+        },
+
+        refill(qty) {
+            stock += qty;
+            console.log(`Refilled the stock. ${stock} pieces now.`);
+        }
+    };
+}
+
+// Usage
+const product = createProduct("Laptop", 50000);
+
+product.buy(3);      // Booked! 7 pieces left.
+product.refill(5);   // Refilled the stock. 12 pieces now.
+
+
+//Observer Pattern --> youtube subscribe and notification of new video kidda thing 
+
+class youtubeChannel {
+    constructor(){
+        this.subscribers= [];
+    }
+
+    subscribe(user){
+        this.subscribers.push(user);
+        user.update(`${user.name} is subscribed the channel`);
+    }
+    subscribe(user){
+        this.subscribers.filter((sub)=> sub!=user);
+        user.update(`${user.name} un-subscribed the channel`);
+    }
+    notify(msg){
+        this.subscribers.forEach((subs)=> subs.update(msg));
+    }
+}
+
+class User{
+    constructor(name){
+        this.name= name ;
+    }
+
+    update(data) {
+        console.log(`${this}, ${data}`);
+    };
+}
+
+
+let GFG= new youtubeChannel();
+let user1 = new User("Prithvii");
+let user2 = new User("ZORO");
+
+//prithvi ne gfg ko subscribe kiya 
+GFG.subscribe(user1) //user1 --> prithvii
+GFG.subscribe(user) //user1 --> ZORO
+
+//notify them 
+GFG.notify("New Banger Uploade!! ");
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
