@@ -34,6 +34,29 @@ debounce(function(){
 }, 1000)
 );
 
+
+//Throttle --> interval pr chalaunga ..!
+// interval means --> gap pe chalta hain 
+
+function throttle(fnc, delay){
+    let timer=0;
+    return function(...args) {
+        let now = Data.now();
+        if (now- timer>=delay){
+            timer=now;
+            fnc(...args);
+        }
+    };
+}
+
+input.addEventListener(
+    "input", 
+    throttle(function(){
+        console.log("Running!!")
+    }, 1000)
+);
+
+
     </script>
  </body>
  </html>

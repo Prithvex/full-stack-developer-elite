@@ -1,0 +1,38 @@
+<!-- Custom utilities (e.g., own implementation of map, deep clone) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Utility</title>
+</head>
+<body>
+    
+
+
+
+    <script>
+// map -> ek array ke top pe chalta hai and us array ke sabhi members us map function ke andar aate hai and map function ek naya 
+//array return krta hai and us naye array mein jo bhi map ne return kiya hoga wahi placed hota hai
+
+    const arr = [1, 2, 3, 4, 5];
+    function myMap(arr, callback) {
+    let newarr = [];
+    for (let i = 0; i < arr.length; i++) {
+    newarr.push(callback(arr[i], i, arr));
+    }
+    return newarr;
+    }
+
+    let ans = myMap ([1, 2, 3, 4], (num) => num + 2);
+    console.log(ans);
+
+//MAP --> khud ka map function
+   let uttar= myMap(arr, function(val){
+        return val+2;
+    });
+
+    </script>
+</body>
+</html>

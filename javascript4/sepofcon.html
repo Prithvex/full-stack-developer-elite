@@ -1,0 +1,34 @@
+<!-- Seperation of Corncerns  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+    // Separation of conncerns --> Dom aur logic ka code alag hoana chahiye
+    
+const btn = document.querySelector("button");
+const ul = document.querySelector("ul");
+btn.addEventListener("click", function () {
+const n1 = Math.floor(Math.random() * 10);
+const n2 = Math.floor(Math.random() * 10);
+let add = n1 + n2;
+let li = document.createElement("li");
+li.textContent = add;
+ul.appendChild(li);
+});
+
+//this is the great approach to do the thing 
+//we seprate the logic of addition to another thing 
+function add(n1, n2){
+    return n1+n2;
+}
+    </script>
+</body>
+</html>
