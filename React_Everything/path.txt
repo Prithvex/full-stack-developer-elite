@@ -13,3 +13,12 @@ framework --> Next.js , Angular --> everything at one section , everything is cu
 - named  import and export -- {}
 
 # Real DOM vs Virtual DOM
+--> Virtual DOM --> real dom ki copy banata hain aur jab chenges karna ho to sirf uss part me hoga pura render nahi hoga 
+
+# jsx --> Javascript XML --> (HTML + Javascript)
+
+# Making folder with Vite --> it is the bundler
+npm create vite
+--> app.jsx me function banao aur export default kar do!
+ 
+ index.html - main.jsx - app.jsx
