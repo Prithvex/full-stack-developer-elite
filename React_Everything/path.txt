@@ -1,0 +1,15 @@
+React is the js library used to create UI --> dev by Facebook(meta)
+problem --> reload ke baad update hota tha (likes , comment , view count)
+Js Essentials (prereq..)
+    basic , functions , arrays , objects , ES6+features , Asynchronous , Javascript
+ 
+React js is the 
+library --> GSAP, Lenis, ReactJS --> use for one particular framework 
+framework --> Next.js , Angular --> everything at one section , everything is customised 
+
+#import Export 
+- script ka type module kardo 
+- default import and export -- direct default export karo
+- named  import and export -- {}
+
+# Real DOM vs Virtual DOM
