@@ -22,3 +22,23 @@ npm create vite
 --> app.jsx me function banao aur export default kar do!
  
  index.html - main.jsx - app.jsx
+
+ #####
+ to print/ get any variable then {} curly braces me likho 
+ ## Use 'rafce' --> to get the jsx function boilerplate 
+
+ # Props Drilling --> ek component to bar bar use karo alag data ke sath 
+ --> creating the cards 
+
+ --> to print integer use this {}
+
+# Project for Props Drilling
+
+# Lucid React library --> for the good items 
+
+# props and Basic Card project 
+
+# CSS ---> global , inline , external 
+-> every small section have their own css 
+--> create seprate css file and import kar do 
+--> module css use kiya karo !!
