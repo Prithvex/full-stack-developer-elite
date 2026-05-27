@@ -72,3 +72,16 @@ npm create vite
                 -> div key={idx}
                 --> <h1> { elem.title} </h1>
                 --> <p> { elem.details} </p>
+
+#Local Storage --> Store the choti si user ki information in the User Side for the fast and efficient data use case --> like account login, and all
+--> localstorage.clear() - clear the local storage 
+--> localStorage.setItem('user','prithvii') // hame key and value done deni padti hain 
+--> const s= localstorage.getItem('key de do sirf")
+--> console.log(s);
+--> localStorage.removeItem('user') 
+--> JSON.stringify and then JSON.parse
+
+#API Calling --> Application Programming Interface 
+--> Backend ko frontend se jodta hain API (Data Sharing Between them)
+--> Backend ka data frontend pe effectively show karna hain 
+------> Fetch , axios (Try Json placeholder for free api) 
