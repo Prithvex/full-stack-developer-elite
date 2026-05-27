@@ -119,3 +119,88 @@ axios.patch--> Update the data
 
 //Images slow aat hain --> Lazy Loading 
 //check card.jsx
+
+#Routing in react 
+    React_Router_DOM  --> its the react routing library 
+    npm i react-router-dom
+
+browser Router --> browser me history ko store karke rakhta hain 
+    sheryians.com = k
+    sheryians.com/courses = /courses
+    sheryians.com/about = /about
+
+HashRouter --> Bas pehle # aa jata hain
+    sheryians.com = /#/KingsPage
+
+MemoryRouter --> 
+
+StaticRouter --> help in static sites
+
+..In Main.jsx..
+import BrowserRouter
+<Browser Router> <App/> </Browser Router> 
+
+
+..src..(pages - this is filename)..files(home, about, contact)
+
+..In App.jsx..
+import Routes
+    <Routes>
+    <Route path='/' element={<Home />} />
+    </Routes>
+
+react me link tag hota hain (ab reload nahi hoga )
+<link to='/' > Home </link> --> ess se single page application ban gya no need multiple jump
+
+basic setup
+nested routes
+dynamic routes
+usenavigate
+404 page
+
+
+#Adv. Routing 
+import Tailwind 
+src/components/
+                navbar.jsx 
+                footer.jsx
+import navbar and footer in app.jsx and create classes (a href)
+npm i react_router_dom
+import react-router-dom aur 
+main.jsx me jao aur <App/> ko wrap kar do--  <BrowserRouter> <App/> </BrowserRouter> 
+
+Make errors Pages 
+404 -- notefound.jsx --> Route path="*" element={</Not Found} />
+$ Use the Codepen Website to add the animations to the website..!
+
+#Nested Routes 
+product/main/newReel -- bs element sambhal ke pass karo after creating the project
+
+#Dynamic Routing --> 
+courses/:id
+ex. courses/ karne ke baad uski details milni chahiye 
+
+connst par= useParams()--> it just give the parameters of the id 
+console.log(par, parId)
+
+# usenavigate Method
+    let navigate = useNavigate()
+    const btnClicked = ()=>{
+    navigate('/')
+    }
+
+#Bonus Topics 
+--> Data Always flow from top to bottom to get them flow from bottom to top (never happend ) But the trick is 
+--> child se parent data tranfer 
+
+# Context API
+--> Data Cetralisation , one centralised data unit used by eveyone 
+
+Code-->
+ek components aur context ki files aur folder create kar lo 
+context api ki data se App ko wrap kar do
+then in themecontext.jsx me {props.childern}
+
+steps: create karo context
+        provide karo data 
+        use karo data ko
