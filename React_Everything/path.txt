@@ -58,3 +58,5 @@ npm create vite
 * useContext --> Data Globally bhej do aur jisko bhi access karna hoga vo direct globally karega 
 * useReducer --> use to manage the complex data state
 * useMemo & useCallback--> Use to manage the optimisation 
+
+# Arrays jo hote hain vo specific jagah se reference lete hainn to when jiss jagah se vo ref. lete hain vahha change hua to array me bhi affect hoga 
