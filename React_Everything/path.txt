@@ -42,3 +42,19 @@ npm create vite
 -> every small section have their own css 
 --> create seprate css file and import kar do 
 --> module css use kiya karo !!
+
+# Tailwind CSS
+--> Tailwind is the utility first library 
+
+--> Tags ko change karte hain 
+
+#function
+--> strict mode ko hata do 
+
+#Hooks --> is the special type of function use to perform special tasks
+* usestate --> manage the states in realtime 
+* useeffect --> side by side road pe function chala do side by side 
+* useRef --> Use to select DOM element, ye referance lets hain
+* useContext --> Data Globally bhej do aur jisko bhi access karna hoga vo direct globally karega 
+* useReducer --> use to manage the complex data state
+* useMemo & useCallback--> Use to manage the optimisation 
