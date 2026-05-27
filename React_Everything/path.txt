@@ -85,3 +85,37 @@ npm create vite
 --> Backend ko frontend se jodta hain API (Data Sharing Between them)
 --> Backend ka data frontend pe effectively show karna hain 
 ------> Fetch , axios (Try Json placeholder for free api) 
+--> Promise the type of datatype in js 
+--> data raste main hain , js Asynchronous work karti hain 
+--> to avoid this cconflict use 
+    async and awaits 
+    async function aap tab tak mat badna ja tak awaits na jo jaye 
+
+-->Use the axios --> 
+    npm i axios
+    import axios form axios
+    const res= axios.get("API HERE")
+    console.local(res)
+
+#UseEffect Hook --> 
+use effect provide the foothpath for the side process 
+main process ke side by side chalne do 
+so ye process ko side wale foothpath pe store kar deta hain aur jab bhi main process rukti hain ye 
+foothpath ki process ko sta
+
+--> useEffect ke sath dependency ka array jarur likho (Blank array[])
+--> [num] is the dependency
+--> use effect ek hi baar chalta hain fir 
+
+
+#Gallary Project --> 
+import Tailwind
+lorem picsum API --> for image data 
+import axios --> api ke data ko khich ke le aao
+axios.get --> get the data from the backend 
+axios.post --> backend ko request bhejte hain 
+//POSTMAN is the software use to check the api requests
+axios.patch--> Update the data
+
+//Images slow aat hain --> Lazy Loading 
+//check card.jsx
