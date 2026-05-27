@@ -3,7 +3,8 @@ import React from 'react'
 const App = () => {
 
   const submitHandler = (e) => {
-    e.preventDefault()
+    e.preventDefault() //prevent the page from reload, 
+    // kuki submit karne pr reload ho jata hain automatic 
     console.log('Form Submitted');
   }
 
@@ -12,6 +13,7 @@ const App = () => {
       <form onSubmit={(e) => {
         submitHandler(e)
       }}>
+        
         <input type="text" placeholder='Enter your name' />
         <button>Submit</button>
       </form>

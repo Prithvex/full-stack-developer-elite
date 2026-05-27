@@ -60,3 +60,15 @@ npm create vite
 * useMemo & useCallback--> Use to manage the optimisation 
 
 # Arrays jo hote hain vo specific jagah se reference lete hainn to when jiss jagah se vo ref. lete hain vahha change hua to array me bhi affect hoga 
+
+#Two way Binding Concept --> 
+
+#notes-app -->  copy banao aur copy me data ko push kar do 
+                setTask(copytask) --> copy ko original se replace kar do 
+                to print --> task.map( function(){
+                    return "hero" // hero print hoga fir notes ko submit karenge to 
+                })
+                -> div ko return karro
+                -> div key={idx}
+                --> <h1> { elem.title} </h1>
+                --> <p> { elem.details} </p>
