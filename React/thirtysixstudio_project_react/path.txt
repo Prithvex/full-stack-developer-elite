@@ -1,0 +1,33 @@
+#Lets Build the ThirtySix Studio Website 
+     this is the two state game --> one is simple page and another is the Animation stuff 
+     and we have to manage both of the state at the same time..!
+      
+
+#Rasta aisa hain 
+Basic react app 
+Tailwind setup 
+create app components 
+download images from ThirtySix Studio
+create canvas components
+    load first 150 images and show in canvas 
+    Animate the canvas
+    make canvas dynamic from desired index
+    reuse the canvas components to create a new canvas 
+
+
+#Trick For Images --> inspect the website --> network tab reload
+--> img --> click - rightclick - copy- copy all listed as HAR
+--> search for the download all images from network tab
+--> github artible by tobek
+--> in console --> var har = //paste the HAR copied
+--> then copy paste the github code (Har se image ke url nikal dega)
+--> then copy the all the URL given 
+--> Convert to array by the help of find and replace and after that make it array
+--> in src - images.js - export default [] //pass the copied array 
+
+//Create canvas Component
+src- canvas.jsx
+
+//use AI to load one and then 150 images 
+//npm install GSAP --> this provide the Animation to the website
+//import GSAP
