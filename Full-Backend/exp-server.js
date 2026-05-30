@@ -1,6 +1,14 @@
 import express from 'express';
-
 const app = express();
+
+//Form Handling, Session and Cookies
+
+
+//this is the format to read the data, jeson and xwww (in POSTMAN app )
+app.use(express.json());
+app.use(express.urlencoded({ extended: true}));
+
+
 
 // Middleware
 app.use((req, res, next) => {
