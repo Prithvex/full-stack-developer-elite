@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WOLF MODE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidden;
+    background:#000;
+    font-family:'Inter',sans-serif;
+}
+
+.hero{
+    position:relative;
+    width:100%;
+    height:100vh;
+
+    background:
+    linear-gradient(
+        90deg,
+        rgba(0,0,0,0.92) 0%,
+        rgba(0,0,0,0.75) 45%,
+        rgba(0,0,0,0.45) 100%
+    ),
+    url("./wolfofwallstreet.jpg");
+
+    background-size:cover;
+    background-position:center;
+    animation:zoomBg 15s ease-in-out infinite alternate;
+}
+
+@keyframes zoomBg{
+    from{
+        background-size:100%;
+    }
+    to{
+        background-size:108%;
+    }
+}
+
+.content{
+    position:absolute;
+    left:8%;
+    top:50%;
+    transform:translateY(-50%);
+    max-width:800px;
+    z-index:10;
+}
+
+.tag{
+    color:#f5c542;
+    font-weight:800;
+    letter-spacing:5px;
+    margin-bottom:20px;
+}
+
+h1{
+    font-family:'Anton',sans-serif;
+    font-size:9rem;
+    line-height:.85;
+    text-transform:uppercase;
+    color:white;
+
+    text-shadow:
+    0 0 20px rgba(255,255,255,.15),
+    0 0 50px rgba(245,197,66,.25);
+}
+
+.gold{
+    color:#f5c542;
+}
+
+.quote{
+    margin-top:35px;
+    color:#e0e0e0;
+    font-size:1.3rem;
+    max-width:600px;
+    line-height:1.8;
+    transition:.3s;
+}
+
+.btn{
+    margin-top:40px;
+
+    padding:18px 45px;
+    border:none;
+    border-radius:999px;
+
+    background:#f5c542;
+    color:#111;
+
+    font-weight:900;
+    letter-spacing:2px;
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:
+    0 0 25px rgba(245,197,66,.4);
+}
+
+.btn:hover{
+    transform:translateY(-4px) scale(1.06);
+
+    box-shadow:
+    0 0 50px rgba(245,197,66,.9);
+}
+
+.stats{
+    display:flex;
+    gap:40px;
+    margin-top:50px;
+}
+
+.stat{
+    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    padding:15px 20px;
+    border-radius:15px;
+}
+
+.stat h3{
+    color:#f5c542;
+    font-size:1.8rem;
+}
+
+.stat p{
+    color:#bbb;
+    font-size:.8rem;
+    letter-spacing:1px;
+}
+
+.money{
+    position:absolute;
+    top:-100px;
+    pointer-events:none;
+    animation:fall linear infinite;
+    opacity:.9;
+}
+
+@keyframes fall{
+    from{
+        transform:
+        translateY(-100px)
+        rotate(0deg);
+    }
+
+    to{
+        transform:
+        translateY(110vh)
+        rotate(360deg);
+    }
+}
+
+.glow{
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:#f5c542;
+    filter:blur(180px);
+    opacity:.12;
+    right:-100px;
+    top:-100px;
+}
+
+@media(max-width:900px){
+
+    .content{
+        left:30px;
+        right:30px;
+    }
+
+    h1{
+        font-size:4.8rem;
+    }
+
+    .stats{
+        flex-wrap:wrap;
+        gap:15px;
+    }
+
+    .quote{
+        font-size:1rem;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="hero">
+
+    <div class="glow"></div>
+
+    <div class="content">
+
+        <div class="tag">
+            WOLF MODE ACTIVATED
+        </div>
+
+        <h1>
+            BUILD<br>
+            AN <span class="gold">EMPIRE</span>
+        </h1>
+
+        <div class="quote" id="quote">
+            Nobody hangs up the phone until the client buys.
+        </div>
+
+        <button class="btn" onclick="changeQuote()">
+            ENTER THE FLOOR
+        </button>
+
+        <div class="stats">
+
+            <div class="stat">
+                <h3>24/7</h3>
+                <p>GRIND MODE</p>
+            </div>
+
+            <div class="stat">
+                <h3>100%</h3>
+                <p>CONVICTION</p>
+            </div>
+
+            <div class="stat">
+                <h3>∞</h3>
+                <p>AMBITION</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const quotes = [
+    "Nobody hangs up the phone until the client buys.",
+    "The wolves hunt while the sheep hesitate.",
+    "Money follows obsession.",
+    "Average is overcrowded.",
+    "Fear kills more dreams than failure ever will.",
+    "Act rich. Think bigger. Move faster.",
+    "The market rewards conviction.",
+    "Success loves speed.",
+    "Build the life they said was impossible.",
+    "Stay hungry. Stay relentless."
+];
+
+function changeQuote(){
+
+    const q = document.getElementById("quote");
+
+    q.style.opacity = 0;
+
+    setTimeout(()=>{
+        q.textContent =
+        quotes[Math.floor(Math.random()*quotes.length)];
+
+        q.style.opacity = 1;
+    },300);
+}
+
+setInterval(changeQuote, 4000);
+
+for(let i=0;i<40;i++){
+
+    const money = document.createElement("div");
+
+    money.className = "money";
+
+    money.innerHTML =
+    ["💸","💵","💰"][
+        Math.floor(Math.random()*3)
+    ];
+
+    money.style.left =
+    Math.random()*100 + "vw";
+
+    money.style.fontSize =
+    (20 + Math.random()*25) + "px";
+
+    money.style.animationDuration =
+    (5 + Math.random()*6) + "s";
+
+    document.body.appendChild(money);
+}
+
+document.querySelector(".btn")
+.addEventListener("click",()=>{
+    document.body.style.animation =
+    "flash .2s";
+});
+
+</script>
+
+</body>
+</html>
