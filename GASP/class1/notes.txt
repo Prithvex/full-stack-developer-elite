@@ -1,0 +1,107 @@
+# GSAP Notes
+
+## What is GSAP?
+
+* GreenSock Animation Platform (GSAP)
+* JavaScript animation library
+* Used to create smooth and powerful web animations
+* Can animate HTML, CSS, SVG, and more
+
+---
+
+## Setup
+
+* Configure project files
+* Add GSAP CDN to your project
+* Search for "GSAP CDN" and paste the script link in HTML
+
+---
+
+## Basic Methods
+
+### gsap.to()
+
+* Initial → Final state
+* Moves element from current position to target position
+
+```js
+gsap.to(".box", {
+  x: 300,
+  duration: 2
+});
+```
+
+### gsap.from()
+
+* Final → Initial state
+* Starts from given values and comes back to original state
+
+```js
+gsap.from(".box", {
+  x: 300,
+  duration: 2
+});
+```
+
+---
+
+## Useful Properties
+
+### stagger
+
+* Animates multiple elements one by one
+
+```js
+stagger: 0.2
+```
+
+### repeat
+
+* Repeats animation
+* `-1` = Infinite repeat
+
+```js
+repeat: -1
+```
+
+### yoyo
+
+* Returns to starting position after animation completes
+* Usually used with `repeat`
+
+```js
+yoyo: true
+```
+
+---
+
+## GSAP Timeline
+
+### What is Timeline?
+
+* Container for multiple animations
+* Creates synchronized animation sequences
+* Makes animation flow easier to manage
+
+```js
+let tl = gsap.timeline();
+```
+
+### Benefits
+
+* Better control
+* Cleaner code
+* Sequential animations
+* Can play, pause, reverse, and restart
+
+---
+
+## Quick Revision
+
+* `gsap.to()` → Current → Target
+* `gsap.from()` → Target → Current
+* `stagger` → One by one animation
+* `repeat` → Repeat animation
+* `repeat: -1` → Infinite loop
+* `yoyo: true` → Go and come back
+* `timeline()` → Control multiple animations

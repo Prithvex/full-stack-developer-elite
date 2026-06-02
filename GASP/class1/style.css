@@ -25,3 +25,30 @@ body {
     background-color: darkorange;
     border-radius: 50%;
 }
+
+#box3{
+    height: 100px;
+    width : 100px;
+    background-color:#60A5FA;
+   
+}
+
+/* this is for timeline control  */
+#b1{
+    height: 150px;
+    width : 150px;
+    background-color:purple;
+   
+}
+#b2{
+    height: 150px;
+    width : 150px;
+    background-color:#1F2937 ;
+   
+}
+#b3{
+    height: 150px;
+    width : 150px;
+    background-color:#10B981
+   
+}
