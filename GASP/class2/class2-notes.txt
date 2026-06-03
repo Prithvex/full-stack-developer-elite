@@ -1,0 +1,13 @@
+# Class 2nd 
+
+Make the 3 pages with center boxed 
+
+ScrollTrigger --> scroll karke page pr aane ke baad animation start hoga 
+    markers: true se screen par start/end markers dikhenge, jisse debugging aasaan hogi.
+    Scroll-triggered animations me delay aam taur par zaroori nahi hota.
+    Ensure karo ki har page ki height ho:
+
+
+
+
+# Pin property -->

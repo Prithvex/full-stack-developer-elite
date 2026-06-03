@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP ScrollTrigger Demo</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: #111;
+            color: white;
+        }
+
+        .panel1 {
+            background: #ff6b6b;
+        }
+
+        .panel2 {
+            background: #4ecdc4;
+        }
+
+        .panel3 {
+            background: #ffe66d;
+        }
+
+        .box {
+            width: 150px;
+            height: 150px;
+            background: white;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        Scroll Down ↓
+    </section>
+
+    <section class="panel1">
+        <div class="box box1"></div>
+    </section>
+
+    <section class="panel2">
+        <div class="box box2"></div>
+    </section>
+
+    <section class="panel3">
+        <div class="box box3"></div>
+    </section>
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Box 1
+        gsap.from(".box1", {
+            x: -300,
+            opacity: 0,
+            duration: 1,
+            scrollTrigger: {
+                trigger: ".panel1",
+                start: "top 80%",
+                end: "top 30%",
+                scrub: true,
+                markers: false
+            }
+        });
+
+        // Box 2
+        gsap.from(".box2", {
+            scale: 0,
+            rotation: 360,
+            duration: 1,
+            scrollTrigger: {
+                trigger: ".panel2",
+                start: "top 80%",
+                end: "top 30%",
+                scrub: true
+            }
+        });
+
+        // Box 3
+        gsap.from(".box3", {
+            y: 200,
+            opacity: 0,
+            duration: 1,
+            scrollTrigger: {
+                trigger: ".panel3",
+                start: "top 80%",
+                end: "top 30%",
+                scrub: true
+            }
+        });
+
+        // Hero text fade
+        gsap.to(".hero", {
+            opacity: 0.2,
+            scrollTrigger: {
+                trigger: ".hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+    </script>
+
+</body>
+</html>

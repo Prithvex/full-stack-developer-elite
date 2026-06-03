@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP Pin</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            overflow-x: hidden; /* this is very important */
+
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: #111;
+            color: white;
+        }
+
+        .panel1 {
+            background: #ff6b6b;
+        }
+        h1 {
+            font-size: 30vw;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .panel2 {
+            background: #4ecdc4;
+        }
+
+        .panel3 {
+            background: #ffe66d;
+        }
+
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        Pin Property
+    </section>
+
+    <section class="panel1">
+       
+    </section>
+
+    <section class="panel2">
+       <h1>Experiences</h1>
+    </section>
+
+    <section class="panel3">
+        
+    </section>
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero text fade
+        gsap.to(".hero", {
+            opacity: 0.2,
+            scrollTrigger: {
+                trigger: ".hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+
+        // Experience section scroll 
+
+        gsap.to(".panel2 h1", {
+            xPercent: -100,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".panel2",
+                start: "top center",
+                end: "bottom top",
+                scrub: 1,
+                markers: true
+            }
+        });
+    </script>
+
+</body>
+</html>

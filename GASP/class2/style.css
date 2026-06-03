@@ -1,12 +1,36 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: gilroy;
-}
-
-html,
-body {
-    height: 100%;
-    width: 100%;
-}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+  
+  body{
+    overflow-x:hidden;
+    font-family:sans-serif;
+  }
+  
+  .page{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  
+  .page1{
+    background:#ff6b6b;
+  }
+  
+  .page2{
+    background:#4ecdc4;
+  }
+  
+  .page3{
+    background:#1a1a1a;
+  }
+  
+  .box{
+    width:150px;
+    height:150px;
+    background:#ffffff; /* same color on all pages */
+    border-radius:20px;
+  }
