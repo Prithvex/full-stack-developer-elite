@@ -1,6 +1,6 @@
 const express= require('express');
 const app = express();
-//path bhi req hain
+//path bhi req hain (for path.join)
 const path= require('path');
 
 
@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 //for the css ye likho pehle and folder create karo 
 // _dirname -- this is our current folder path 
-app.use(express.static(path.join(_dirname, 'public')));  
+app.use(express.static(path.join(__dirname, 'public')));  //all static forders
 
 //setting up ejs  for ejs pages
 app.set('view engine', 'ejs')
@@ -19,14 +19,26 @@ app.get('/', (req, res) => {
 });
 
 app.get('/money', (req, res) => {
-  res.render("index.ejs");
+  res.render("index");
 });
 
 app.get('/calc', (req, res) => {
   res.render("calc.ejs");
 });
 
+app.get('/profile', (req, res) => {
+  res.render("profile.ejs");
+});
 
+app.get('/profile/:username', (req, res) => {
+  // req.param --> means aisa kuch bhi jiske aage colon hain
+  res.send(`Welcome, ${req.params.username}`);
+});
+
+app.get('/profile/:username/:age', (req, res) => {
+  // req.param --> means aisa kuch bhi jiske aage colon hain
+  res.send(`Welcome, ${req.params.username} of age ${req.params.age}`);
+});
 
 // Start server
 app.listen(3000, () => {

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luffy Profile</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body{
+        background: #f5f5f5;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+    }
+
+    .profile-card{
+        width:350px;
+        background:white;
+        border-radius:15px;
+        overflow:hidden;
+        box-shadow:0 4px 15px rgba(0,0,0,0.2);
+        text-align:center;
+    }
+
+    .banner{
+        height:120px;
+        background:linear-gradient(135deg,#ff6b35,#ffcc00);
+    }
+
+    .profile-img{
+        width:120px;
+        height:120px;
+        border-radius:50%;
+        border:5px solid white;
+        margin-top:-60px;
+        object-fit:cover;
+    }
+
+    .content{
+        padding:20px;
+    }
+
+    h2{
+        color:#333;
+        margin-bottom:10px;
+    }
+
+    p{
+        color:#666;
+        line-height:1.5;
+        margin-bottom:15px;
+    }
+
+    button{
+        background:#ff6b35;
+        color:white;
+        border:none;
+        padding:10px 20px;
+        border-radius:25px;
+        cursor:pointer;
+        font-size:16px;
+    }
+
+    button:hover{
+        background:#e85a2b;
+    }
+
+    #quote{
+        margin-top:15px;
+        color:#ff6b35;
+        font-weight:bold;
+    }
+</style>
+</head>
+<body>
+
+<div class="profile-card">
+    <div class="banner"></div>
+
+    <img
+        class="profile-img"
+        src="https://upload.wikimedia.org/wikipedia/en/c/cb/Monkey_D_Luffy.png"
+        alt="Luffy"
+    >
+
+    <div class="content">
+        <h2>Monkey D. Luffy</h2>
+
+        <p>
+            Captain of the Straw Hat Pirates and future King of the Pirates.
+            Luffy is known for his courage, loyalty, and dream of finding the
+            legendary One Piece treasure.
+        </p>
+
+        <button onclick="showQuote()">Show Quote</button>
+
+        <div id="quote"></div>
+    </div>
+</div>
+
+<script>
+function showQuote() {
+    document.getElementById("quote").innerText =
+        "I'm gonna be King of the Pirates!";
+}
+</script>
+
+</body>
+</html>
