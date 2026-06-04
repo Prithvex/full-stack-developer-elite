@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes & Tasks App</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-100 min-h-screen">
+
+    <div class="container mx-auto px-4 py-10">
+
+        <!-- Heading -->
+        <h1 class="text-4xl font-bold text-center text-slate-800 mb-8">
+            Notes & Tasks
+        </h1>
+
+        <!-- Form Card -->
+        <div class="max-w-xl mx-auto bg-white rounded-2xl shadow-lg p-6">
+
+            <form action="/create" method="POST" class="space-y-4">
+
+                <!-- Title -->
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">
+                        Title
+                    </label>
+
+                    <input
+                        type="text"
+                        name="title"
+                        placeholder="Enter note title..."
+                        required
+                        class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                </div>
+
+                <!-- Details -->
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">
+                        Description
+                    </label>
+
+                    <textarea
+                        name="details"
+                        rows="5"
+                        placeholder="Write your task details..."
+                        required
+                        class="w-full border border-gray-300 rounded-lg px-4 py-3 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    ></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button
+                    type="submit"
+                    class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300 font-semibold"
+                >
+                    Create Note
+                </button>
+
+            </form>
+        </div>
+
+        <!-- Notes Section -->
+        <div class="max-w-6xl mx-auto mt-10">
+
+            <h2 class="text-2xl font-semibold text-slate-800 mb-5">
+                Your Notes
+            </h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <% files.forEach(function(file){ %>
+
+                    <div class="bg-white rounded-xl shadow-md p-5">
+
+                        <h3 class="text-xl font-bold text-slate-800 break-words">
+                            <%= file %>
+                        </h3>
+
+                        <p class="text-gray-600 mt-3">
+                            Saved note file
+                        </p>
+
+                        <div class="mt-4 flex justify-end gap-2">
+
+                            <a href="/file/<%= file %>">
+                                <button class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600">
+                                    Read More
+                                </button>
+                            </a>
+
+                            <a href="/edit/<%= file %>"
+                                class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600">
+                                Edit
+                            </a>
+
+                            <a href="/delete/<%= file %>"
+                                onclick="return confirm('Are you sure you want to delete this note?')"
+                                class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600">
+                                    Delete
+                            </a>
+                        </div>
+
+                    </div>
+
+                <% }) %>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
