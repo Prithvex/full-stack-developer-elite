@@ -60,3 +60,37 @@
 
 
 */
+
+// Class 12  
+
+/*
+    CRUD Operations with EJS & Server-Side Rendering
+
+    created a folder called --> CRUD_ejs
+
+    creating the pages and all 
+    and add aur remove into the database itself
+    
+
+
+
+    After creating the create route , created the file called --> models
+
+
+
+
+
+*/
+
+
+//class 13 
+
+/*
+    
+
+
+
+
+
+
+*/
