@@ -1,5 +1,5 @@
 
-
+//# Class 14
 /*
 
 //Authentication & Authorization
@@ -54,8 +54,44 @@ iii) --> Lets start JWT
 
         Basically JWT converts the long string into --> 3 parts 
 
+*/
 
+//# Class 15
+
+/*
+Created a folder --> auth
+
+        Create user account
+        mongoose
+        schema
+        model
+        usercreate
+        password
+        hash
+        jwt token -> cookie
+        login -> token -> decrypt -> email
 
 
 */
 
+//# class 15 
+
+/*
+
+//MONGODB Data Association 
+
+embeding --> ek data dono jagah pr rakh diya 
+referencing --> ek jagah pr data hain aur dusre jagah pr sirf id hain aur uske through refernce kar rahe hain 
+
+
+
+
+
+
+
+
+
+
+
+
+*/
