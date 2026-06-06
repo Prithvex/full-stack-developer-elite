@@ -83,10 +83,14 @@ Created a folder --> auth
 embeding --> ek data dono jagah pr rakh diya 
 referencing --> ek jagah pr data hain aur dusre jagah pr sirf id hain aur uske through refernce kar rahe hain 
 
+Created a folder called --> Data Association (DataAsso)
+installed packages mongoose and express 
 
 
+user ke pass post array me id's hogi  
+aur post ke pass user ke andr ek id hogi jo bbatayenga ki post kis user ki hain 
 
-
+post ko pata hona chahiye  uska user kon hain aur user ko pata hona chahiye uska post kon hain 
 
 
 
