@@ -93,6 +93,38 @@ aur post ke pass user ke andr ek id hogi jo bbatayenga ki post kis user ki hain
 post ko pata hona chahiye  uska user kon hain aur user ko pata hona chahiye uska post kon hain 
 
 
+*/
+
+// # Class 17
+/*
+
+    lets create a Folder called --> Miniature
+
+    users post likh paayege
+    login and register
+    logout
+    post creation
+    post like
+    post delete
+    
+
+*/
+
+//# Class 18 
+/*
+        continue  with the same folder Miniature
+
+
+class 19 
+--> edit and like wala feature 
+
+
+
+
+
+
+
+
 
 
 
