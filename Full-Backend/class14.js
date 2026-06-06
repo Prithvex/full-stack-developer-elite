@@ -136,4 +136,9 @@ class 20
 
 comment out everything related to multer 
 
+lets create config/utils folder  
+
+created new route profile/upload
+
+created a /upload route
 */

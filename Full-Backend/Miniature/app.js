@@ -7,34 +7,13 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const crypto = require('crypto'); //for the image ke name ko difficult string banane ke liye 
-const multer = require('multer');
-
+const upload = require("./config/multerconfig");
 
 app.use(cookieParser());
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-
-//now mera multer create ho gaya 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, './public/images/uploads')
-    },
-    filename: function (req, file, cb) {
-      crypto.randomBytes(12, function(err, bytes){
-        if (err) return cb(err);
-
-        const fn = bytes.toString("hex") + path.extname(file.originalname); // this extname --> gives the extension of the file name (user wali file)
-        cb(null, fn)
-    
-    })
-    }
-  })
-  
-  //this is my multers upload variable 
-  const upload = multer({ storage: storage }) 
-
 
 
 // ---------- PUBLIC ROUTES ----------
@@ -46,21 +25,20 @@ app.get('/login', (req, res) => {
     res.render("login");
 });
 
-//Learn Fucking Multer 
-app.get('/test', (req, res) => {
-    res.render("test");
+app.get('/profile/upload', (req, res) => {
+    res.render("profileupload");
 });
 
-app.post('/upload', upload.single('image'), (req, res) => {
-    //multer req me body and  body  object add karta  hain (textfield)
-    //aur jo file hogi  vo req.body me nahi file me hogi 
-    console.log(req.file);
-    res.send("File uploaded successfully");
+app.post('/upload',  isLoggedIn ,upload.single('image'), async (req, res) => {
+    //changing the default file to uploaded file 
+   let user =  await userModel.findOne({email: req.user.email})
+    user.profilepic =  req.file.filename;
+    await user.save();
+    res.redirect("/profile")
+
+
 
 });
-
-
-
 
 // ---------- REGISTER ----------
 app.post('/register', async (req, res) => {
