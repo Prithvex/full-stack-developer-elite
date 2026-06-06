@@ -120,14 +120,20 @@ class 19
 
 
 
+class 20 
+--> Lets understand  multer 
+
+file upload karna ho, send karna ho kinda feature and made with the help of multer 
 
 
+in our --> Miniature folder 
+
+enctype="multipart/form-data" ---> ye  set karna  hi hota hain multer ko kam karane ne ke liye 
 
 
+class 20 
+--> Handling Multer and add the user profile images
 
-
-
-
-
+comment out everything related to multer 
 
 */
