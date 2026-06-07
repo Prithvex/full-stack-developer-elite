@@ -2,4 +2,70 @@
 
 Created a proper folder Structure Industry Standards 
 
+//Agar blank folder hain to git keep ki jarurat padti hain 
+//blank folder ko github pr initialise karne ke liye 
 
+//extension by sharians --> gitkeep (automatically creates the .gitkeep file)
+// ctrl+shift+p  --> to add the git keep 
+
+
+//mongoose --> Separation of Cencerns --> separate the files 
+// postman shit dekh lo kya hain ye 
+//
+
+//lets  Use the debugger in our main mongoose connection folder 
+
+set DEBUG=development: --> can set in console 
+//npm i config 
+
+can set the full environment --> run it on console
+set NODE_ENV=development
+
+To verify --> echo %NODE_ENV%
+
+PowerShell
+
+Set for the current session:
+
+$env:NODE_ENV = "development"
+
+View it:
+
+$env:NODE_ENV
+Set permanently (Windows)
+
+Command Prompt:
+
+setx NODE_ENV development
+
+Then open a new terminal window and verify:
+
+echo %NODE_ENV%
+
+
+
+
+/ --> signup or login
+/shop-> shop
+/users/cart -> cart
+admin admin panel
+/owner/products-> show all products
+/owner/admin show admin panel to create products
+
+//Ab isadmin wali field hata sakte ho --> remove it
+
+
+ab advancement hoga code me 
+bcrypt , jwt etc ect 
+
+secure our jwt key --> create a key.js file in config 
+
+created a authController --> move the code from userRoute 
+
+created is login js in the middleware
+
+app.js me express session name ka package install kia..!
+
+
+
+//"index.js "  -- me products show karna chahta hu 
